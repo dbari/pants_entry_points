@@ -1,0 +1,25 @@
+[GLOBAL]
+pants_version = "2.13.0"
+backend_packages = [
+  "pants.backend.python",
+]
+use_deprecated_directory_cli_args_semantics = false
+
+[source]
+root_patterns = [
+  '/src',
+  '/entry_points',
+]
+
+[python]
+interpreter_constraints = ["CPython>=3.8,<3.10"]
+tailor_pex_binary_targets = false
+
+[subprocess-environment]
+# Allow passing the proxy variables to the subprocesses
+env_vars.add = [
+  "http_proxy", "https_proxy", "no_proxy",
+]
+
+[anonymous-telemetry]
+enabled = false
